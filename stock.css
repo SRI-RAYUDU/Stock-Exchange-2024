@@ -1,0 +1,109 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(45deg, #a8c0ff, #3f2b96);
+}
+
+.navbar {
+  font-family: 'Roboto', sans-serif;
+}
+
+.coin-transition {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 50px;
+  animation: moveAndRotate 8s infinite linear;
+  z-index: 1;
+}
+
+.coin-transition.hidden,
+.marquee.hidden {
+  display: none;
+}
+
+@keyframes moveAndRotate {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(90vw) rotate(360deg);
+  }
+  100% {
+    transform: translateX(0) rotate(720deg);
+  }
+}
+
+marquee img {
+  width: 350px;
+  height: auto;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 18rem;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h5 {
+  color: #333;
+}
+
+.card .price {
+  color: green;
+  font-weight: bold;
+}
+
+.card .change {
+  color: red;
+}
+
+.card .change-percent {
+  color: red;
+}
+
+.card .country-code,
+.card .exchange,
+.card .exchange-open,
+.card .exchange-close {
+  color: #555;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
