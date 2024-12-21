@@ -1,48 +1,101 @@
-body {
+/* Basic reset for the body and html */
+html, body {
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(45deg, #a8c0ff, #3f2b96);
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-.navbar {
-  font-family: 'Roboto', sans-serif;
-}
-
+/* Enhanced Coin Transition */
 .coin-transition {
   position: absolute;
-  top: 10%;
-  left: 10%;
-  width: 50px;
-  animation: moveAndRotate 8s infinite linear;
+  top: 10%; /* Starting position */
+  left: 0; /* Start from the left edge */
+  width: 80px; /* Slightly larger size for better visibility */
   z-index: 1;
+  animation: enhancedMoveAndRotate 10s infinite linear;
 }
 
-.coin-transition.hidden,
-.marquee.hidden {
-  display: none;
-}
-
-@keyframes moveAndRotate {
+@keyframes enhancedMoveAndRotate {
   0% {
     transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(200px) rotate(90deg);
+    opacity: 1;
   }
   50% {
-    transform: translateX(90vw) rotate(360deg);
+    transform: translateX(500px) rotate(180deg);
+  }
+  80% {
+    transform: translateX(800px) rotate(270deg);
+    opacity: 1;
   }
   100% {
-    transform: translateX(0) rotate(720deg);
+    transform: translateX(100%) rotate(360deg);
+    opacity: 0;
   }
 }
 
-marquee img {
-  width: 350px;
-  height: auto;
+
+/* Navbar */
+.navbar {
+  background-color: rgb(235, 232, 218);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+#markets{
+  margin-top:80px
+}
+
+.list li {
+  display: inline;
+  padding: 10px;
+ 
+}
+
+
+.final {
+  margin-left: auto;
+  padding: 10px;
+}
+
+.list li a {
+  text-decoration: none;
+  color: black;
+}
+
+.list li a:hover {
+  color: red;
+}
+.list-item{
+  margin-left:900px
+}
+
+.container {
+  margin-top: 80px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: 6px;
+  padding: 20px;
 }
 
 .card {
@@ -52,6 +105,8 @@ marquee img {
   width: 18rem;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top:-10px;
+  
 }
 
 .card h5 {
@@ -81,17 +136,19 @@ marquee img {
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 5px;
+
+ 
 }
 
 .pagination button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   cursor: pointer;
   font-size: 16px;
   border-radius: 10px;
+  margin-top:-18px
 }
 
 .pagination button:hover {
@@ -106,4 +163,8 @@ marquee img {
   position: fixed;
   width: 100%;
   bottom: 0;
+}
+
+.hidden {
+  display: none;
 }

@@ -3,7 +3,11 @@ const cardContainer = document.getElementById('cardContainer');
 const coinTransition = document.getElementById('coinTransition');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const marquee = document.querySelector('marquee');
+const navbarLinks = document.querySelectorAll('.navbar .list li a');
+const sections = document.querySelectorAll('section');
+const homeLink = document.querySelector('.navbar .list li a[href="#home"]'); 
+
+
 let currentPage = 1;
 const cardsPerPage = 4;
 
@@ -43,11 +47,10 @@ searchForm.addEventListener('submit', async (e) => {
       totalPages = Math.ceil(stockData.length / cardsPerPage);
       currentPage = 1;
       displayStockData();
-      stopAnimations();
+      hideOtherElements();
     } else {
       cardContainer.innerHTML = '<p>No stock data available.</p>';
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
+      showOtherElements();
     }
   } catch (error) {
     console.error(error);
@@ -66,11 +69,7 @@ function displayStockData() {
   });
 
   prevBtn.style.display = currentPage === 1 ? 'none' : 'inline-block';
-
   nextBtn.style.display = currentPage === totalPages ? 'none' : 'inline-block';
-
-  marquee.style.display = 'none';
-  coinTransition.style.display = 'none';
 }
 
 prevBtn.addEventListener('click', () => {
@@ -106,6 +105,25 @@ function createCard(stock) {
   return card;
 }
 
-function stopAnimations() {
-  coinTransition.style.animation = 'none';
+
+homeLink.addEventListener('click', (e) => {
+  e.preventDefault(); 
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  document.querySelector('input[type="search"]').value = ''; 
+  cardContainer.innerHTML = ''; 
+  
+  showOtherElements(); 
+});
+
+
+function hideOtherElements() {
+  sections.forEach((section) => (section.style.display = 'none'));
+  coinTransition.style.display = 'none';
 }
+
+function showOtherElements() {
+  sections.forEach((section) => (section.style.display = 'block'));
+  coinTransition.style.display = 'block';
+}
+
